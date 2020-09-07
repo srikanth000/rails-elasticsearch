@@ -8,16 +8,17 @@
 
 Contact.__elasticsearch__.create_index!(force: true)
 
-# contact1 =  Contact.create!(first_name: 'narendra', last_name: 'modi')
-# contact2 =  Contact.create!(first_name: 'barak', last_name: 'obama')
-# contact3 =  Contact.create!(first_name: 'trump', last_name: 'donald')
-# contact4 =  Contact.create!(first_name: 'trump', last_name: 'donald')
+
+contact1 =  Contact.create!(first_name: 'narendra', last_name: 'modi')
+contact2 =  Contact.create!(first_name: 'barak', last_name: 'obama')
+contact3 =  Contact.create!(first_name: 'trump', last_name: 'donald')
+contact4 =  Contact.create!(first_name: 'trump', last_name: 'donald')
 
 
-# note1 = Note.create!(notes: 'I became pM two times', contact: contact1)
-# note2 = Note.create!(notes: 'It is going to be record if i bacome third time', contact: contact1)
-# note3 = Note.create!(notes: 'I became pM two times', contact: contact2)
-# note4 = Note.create!(notes: 'Iam going to become pM two times', contact: contact3)
-# note5 = Note.create!(notes: 'Iam going to become pM three times', contact: contact4)
+note1 = Note.create!(notes: 'I became pM two times', contact: contact1)
+note2 = Note.create!(notes: 'It is going to be record if i bacome third time', contact: contact1)
+note3 = Note.create!(notes: 'I became pM two times', contact: contact2)
+note4 = Note.create!(notes: 'Iam going to become pM two times', contact: contact3)
+note5 = Note.create!(notes: 'Iam going to become pM three times', contact: contact4)
 
 

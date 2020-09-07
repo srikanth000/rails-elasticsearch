@@ -4,7 +4,16 @@ class ContactsController < ApplicationController
       query: {
         multi_match: {
           query: params[:query],
-          fields: ['first_name', 'note.notes', 'last_name']
+          fields: ['first_name', 'notes.notes', 'last_name']
+        }
+      },
+      highlight: {
+        pre_tags: ['<em>'],
+        post_tags: ['</em>'],
+        fields: {
+          'first_name': {},
+          'last_name': {},
+          'notes.notes': {}
         }
       }
     ).results
