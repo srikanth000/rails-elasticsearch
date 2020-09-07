@@ -79,7 +79,22 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
   database: contact_search_production
   username: contact_search
   password: <%= ENV['CONTACT_SEARCH_DATABASE_PASSWORD'] %>
+development:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_development
+  pool: 5
+  username: 'srikanth'
+  password: 'password'
+  host: 'localhost'
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_test
+  pool: 5
+  username: myapp
+  password: password
