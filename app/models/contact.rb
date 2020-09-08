@@ -7,6 +7,8 @@ class Contact < ApplicationRecord
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
+    #can add more validations on modal level to avoid duplications and other custome requirements
+
     #enahancement -- Make this more coherent and dry by pushing this indexing into searchable concern
 
 

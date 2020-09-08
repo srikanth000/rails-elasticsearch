@@ -22,6 +22,7 @@ class ContactsController < ApplicationController
 
   #Searching multiple modals based on their indexs
   def search
+    #we can make the search more robust by permiring the strong parameters 
     results = Elasticsearch::Model.search(params[:query], [Note, Contact]).results.to_a.map(&:to_hash)
     ::Contacts::Commands::BuildResponse.call(results) do
         on(:ok) { |response| render json: { msg: 'success', results: response } }

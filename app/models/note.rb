@@ -2,6 +2,7 @@ class Note < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   # include Searchable -- have to implement later
+  #can add more validations on modal level to avoid duplications and other custome requirements
 
   #enahancement -- Make this more coherent and dry by pushing this indexing into searchable concern
 
