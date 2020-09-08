@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Contact.__elasticsearch__.create_index!(force: true)
+Contact.__elasticsearch__.create_index!
 
 
 contact1 =  Contact.create!(first_name: 'narendra', last_name: 'modi')

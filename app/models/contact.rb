@@ -7,20 +7,43 @@ class Contact < ApplicationRecord
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
-    # index_name([Rails.env,base_class.to_s.pluralize.underscore].join('_'))
-
-    settings index: { number_of_shards: 1 } do
-      mappings dynamic: 'false' do
-        indexes :id, analyzer: 'english'
-        indexes :first_name, analyzer: 'english'
-        indexes :last_name, analyzer: 'english'
-        indexes :notes do
-          indexes :id, analyzer: 'english'
-          indexes :notes, analyzer: 'english'
-        end
-
+    #edge_ngram
+    settings index: {
+      "analysis": {
+        "analyzer": {
+          "substring_analyzer": {
+            "tokenizer": "standard",
+            "filter": ["lowercase", "substring"]
+          }
+        },
+        "filter": {
+          "substring": {
+            "type": "edgeNGram",
+            "min_gram": 1,
+            "max_gram": 3
+          }
+        }
+      }
+    } do
+      mappings dynamic: 'false'  do
+          indexes :first_name, analyzer: "substring_analyzer"
+          indexes :last_name, analyzer: "substring_analyzer"
+            indexes :notes do
+              indexes :id
+              indexes :notes, analyzer: "substring_analyzer"
+          end
       end
     end
+    
+    # mappings dynamic: 'false' do 
+    #   indexes :id
+    #   indexes :first_name
+    #   indexes :last_name
+    #   indexes :notes, type: 'nested' do 
+    #     indexes :id,   type: 'integer'
+    #     indexes :notes
+    #   end
+    # end
 
 
     def as_indexed_json(options = {})
@@ -30,5 +53,5 @@ class Contact < ApplicationRecord
           notes: { only: [:id, :notes] }
         })
     end 
-
+     
 end

@@ -79,10 +79,11 @@ GEM
       elasticsearch-transport (= 7.9.0)
     elasticsearch-api (7.9.0)
       multi_json
-    elasticsearch-model (6.0.0)
+    elasticsearch-model (7.1.1)
       activesupport (> 3)
       elasticsearch (> 1)
       hashie
+    elasticsearch-rails (7.1.1)
     elasticsearch-transport (7.9.0)
       faraday (~> 1)
       multi_json
@@ -218,7 +219,8 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  elasticsearch-model (~> 6.0.0)
+  elasticsearch-model
+  elasticsearch-rails
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
