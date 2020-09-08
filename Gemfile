@@ -29,6 +29,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem "rectify"
+gem 'pry', '~> 0.12.2'
+
 
 
 

@@ -7,7 +7,10 @@ class Contact < ApplicationRecord
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
-    #custom query --- for this object
+    #enahancement -- Make this more coherent and dry by pushing this indexing into searchable concern
+
+
+    #------>custom query --- for this object --- need to work on this to build a customized search pattern
     # settings index: {
     #   "analysis": {
     #     "analyzer": {
@@ -35,16 +38,25 @@ class Contact < ApplicationRecord
     #   end
     # end
     
+
     mappings dynamic: 'false' do 
       indexes :id
       indexes :first_name, analyzer: 'english'
       indexes :last_name, analyzer: 'english'
+      indexes :notes do
+        indexes :id
+            indexes :notes, analyzer: "english"
+      end
     end
 
 
+    #it works as usual serializer 
     def as_indexed_json(options = {})
       self.as_json(
-        only: [:id, :first_name, :last_name])
+        only: [:id, :first_name, :last_name],
+        include: {
+          notes: { only: [:id, :notes] }
+        })
     end 
      
 end

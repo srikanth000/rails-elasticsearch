@@ -22,5 +22,6 @@ note2 = Note.create!(notes: 'It is going to be record if i bacome third time', c
 note3 = Note.create!(notes: 'I became pM two times', contact: contact2)
 note4 = Note.create!(notes: 'Iam going to become pM two times', contact: contact3)
 note5 = Note.create!(notes: 'Iam going to become pM three times', contact: contact4)
+note6 = Note.create!(notes: 'It was nice learning', contact: contact2)
 
 

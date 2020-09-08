@@ -6,6 +6,8 @@ module Searchable
     include Elasticsearch::Model
     include Elasticsearch::Model::Callbacks
 
+    ##under implementation -- devisng a reusable concern for both models so that we can achieve dry policy
+
     CONTACT_ATTRS = %i[first_name, last_name].freeze
     NOTE_ATTRS = %i[notes].freeze
 
