@@ -1,13 +1,17 @@
 class Note < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  # include Searchable -- have to implement later
+
   belongs_to :contact
 
-  after_save :index_contact_in_elasticsearch
-
-
-  private
-
-  def index_contact_in_elasticsearch
-    Contact.find_each { |contact| contact.__elasticsearch__.index_document }
+  mappings dynamic: 'false' do 
+      indexes :id
+      indexes :notes, analyzer: 'english'
   end
-  
+
+  def as_indexed_json(options = {})
+    self.as_json(
+      only: [:id, :notes])
+  end   
 end

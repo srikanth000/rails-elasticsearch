@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Contact.__elasticsearch__.create_index!
+Note.__elasticsearch__.create_index!
+
 
 
 contact1 =  Contact.create!(first_name: 'narendra', last_name: 'modi')
